@@ -1,0 +1,14 @@
+width : 1280px
+height : 190px 
+
+스크롤시 헤더 메뉴 폰트색 변함
+
+CEO인사말  	SET-TOP Boxes       Pay TV Solution 		재무정보 		Open Source Platform 	보도자료
+기업개요    	Broadband CPE       Broadband Solution	공시정보		CAS/DRM		주요 이벤트
+경영이념	 		    	  Management Soultion	주식정보		Middleware		웹매거진
+채용정보	   						내부정보관리규정	System Integrator		Testimonials
+글로벌네트워크								OTT			공고
+온라인문의											E-Sourcing
+
+swiper
+mousewheel

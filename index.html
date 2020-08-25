@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>kaon media</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"/>
+    <link rel="stylesheet" href="./css/index_style.css">
+    
+</head>
+<body>
+    <nav>
+        <div id="logo">
+            <a href="index.html">KAON MEDIA</a>
+        </div>
+        
+        <ul class="header">
+            
+            <li class="sub sub1"><a href="#section1">Company</a>
+                <ul class="menu menu1">
+                    <li><a href="#">회사소개</a></li>
+                    <li><a href="#">회사소개</a></li>
+                    <li><a href="#">회사소개</a></li>
+                    <li><a href="#">회사소개</a></li>
+                    <li><a href="#">회사소개</a></li>
+                </ul>
+            </li>
+            
+            
+            <li class="sub sub2"><a href="#section2">Products</a>
+                <ul class="menu menu2">
+                    <li><a href="#">회사소개</a></li>
+                    <li><a href="#">회사소개</a></li>
+                    <li><a href="#">회사소개</a></li>
+                    <li><a href="#">회사소개</a></li>
+                    <li><a href="#">회사소개</a></li>
+                </ul>
+            </li>
+
+
+            <li class="sub sub3"><a href="#section3">Solutions</a>
+                <ul class="menu menu3">
+                    <li><a href="#">회사소개</a></li>
+                    <li><a href="#">회사소개</a></li>
+                    <li><a href="#">회사소개</a></li>
+                    <li><a href="#">회사소개</a></li>
+                    <li><a href="#">회사소개</a></li>
+                </ul>
+            </li>
+
+
+            <li class="sub sub4"><a href="#section4">Investor</a>
+                <ul class="menu menu4">
+                    <li><a href="#">회사소개</a></li>
+                    <li><a href="#">회사소개</a></li>
+                    <li><a href="#">회사소개</a></li>
+                    <li><a href="#">회사소개</a></li>
+                    <li><a href="#">회사소개</a></li>
+                </ul>
+            </li>
+
+
+            <li class="sub sub5"><a href="#section5">Partnership</a>
+                <ul class="menu menu5">
+                    <li><a href="#">회사소개</a></li>
+                    <li><a href="#">회사소개</a></li>
+                    <li><a href="#">회사소개</a></li>
+                    <li><a href="#">회사소개</a></li>
+                    <li><a href="#">회사소개</a></li>
+                </ul>
+            </li>
+
+            <li class="sub sub6"><a href="#section5">PR</a>
+                <ul class="menu menu6">
+                    <li><a href="#">회사소개</a></li>
+                    <li><a href="#">회사소개</a></li>
+                    <li><a href="#">회사소개</a></li>
+                    <li><a href="#">회사소개</a></li>
+                    <li><a href="#">회사소개</a></li>
+                </ul>
+            </li>
+
+
+        </ul>
+        <div class="side-menu">
+            <span class="bar"><i class="fas fa-bars fa-2x"></i></span>
+            <div class="side-container">
+                <div class="side-links">
+                    <ul id="side-ul">
+                        <li data-menuancher="secondPage"><a href="#section1">Company</a></li>
+                        <li data-menuancher="thirdPage"><a href="#section2">Products</a></li>
+                        <li data-menuancher="fourthPage"><a href="#section3">Solutions</a></li>
+                        <li data-menuancher="secondPage"><a href="#section4">Investor</a></li>
+                        <li data-menuancher="thirdPage"><a href="#section5">Partnership</a></li>
+                        <li data-menuancher="fourthPage"><a href="#section6">PR</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div> 
+        <div class="side-close">
+            <span class="close"><i class="fas fa-times fa-2x"></i></span>
+        </div>   
+    </nav>
+    <!-- <i class="fas fa-search fa-2x"> -->
+    
+    
+    <div id="line"></div>
+   
+    <div id="section1">
+            <div class="banner">
+                <span>DIGITAL LIFE,</span><br>
+                <span>SIMPLY CONNETED</span>
+            </div>
+           
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+            <div class="dots">
+                <span class="dot" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+                <span class="dot" onclick="currentSlide(3)"></span>
+            </div>
+
+
+    </div>
+
+        <div id="section2" class="page-start">
+            section2
+        </div>
+        <div id="section3">
+            section3
+        </div>
+        <div id="section4">
+            section4
+        </div>
+        <div id="section5">
+            section5
+        </div>
+        <div id="section6">
+            section6
+        </div>
+       
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script>
+        
+        $('#menu li').click(function(){
+            var section = $(this).find('a').attr('href');
+            var top = $(section).offset().top -150;
+            $('html', 'body').animate({ 'scrollTop': $top}, 2000);
+        });
+
+        $(function () {
+            var nav = $('nav'); //헤더를 변수에 넣기
+            var page = $('.page-start'); //색상이 변할 부분
+            var pageOffsetTop = page.offset().top; //색상 변할 부분의 top값 구하기
+            $(window).resize(function () { //반응형을 대비하여 리사이즈시 top값을 다시 계산
+                pageOffsetTop = page.offset().top;
+            });
+
+            $(window).on('scroll', function () {
+                if ($(window).scrollTop() >= pageOffsetTop) { // 스크롤이 page보다 밑에 내려가면
+                    nav.addClass('down'); //클래스 추가
+                } else { // 스크롤 올릴 때
+                    nav.removeClass('down'); //클래스 제거
+                }
+            });
+        });
+
+        // var side_container = document.getElementsByClassName('side-container')[0];
+        // var close = document.getElementsByClassName('close')[0];
+        // var open = document.getElementsByClassName('bar')[0];
+
+      
+      
+        $(function(){
+            var side = $('.side-container');
+            var close = $('.close');
+            var open = $('.bar');
+
+            $('.fa-bars').click(function(){
+                side.addClass('display');
+                close.addClass('display');
+                open.addClass('hide');
+                console.log('okay')
+            });
+
+            $('.fa-times').click(function(){
+                console.log('hide');
+                close.removeClass('display');
+                open.removeClass('hide');
+                side.removeClass('display');
+            });
+        });
+
+        // $(function(){
+        //     $('.fa-times').click(function(){
+        //         side_container.style.display = 'none';
+        //         close.style.display='none';
+        //         open.style.display='block';
+        //     });
+        // });
+
+
+    </script>
+</body>
+</html>

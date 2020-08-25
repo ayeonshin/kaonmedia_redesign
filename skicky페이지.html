@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+*, *:before, *:after {box-sizing: border-box;}
+.clearfix:before,
+.clearfix:after {
+  content: " ";  display: block;}
+.clearfix:after { clear: both;}
+.clearfix { *zoom: 1;}
+body { background-color: #D6E1E5;
+  color: #6B7072; font-size: 100%; margin-bottom: 10em;}
+h1, h2, p {  padding: 0 50px;
+  line-height: 1.75;  margin: 0 auto; max-width: 1100px;}
+h1, h2 { font-family:"Open Sans"; font-weight: 300;
+    font-size: 250%;  line-height: 1.5;}
+h1 { margin-top:1.5em; margin-bottom: 1.5em;
+        color:#db5b33;}
+h2 { margin-top:2em; margin-bottom: 1em;
+    color: #4598b5;}
+
+p { font-family:'Merriweather';  
+    font-weight: 300; font-size: 100%;
+   margin-top:2em; margin-bottom: 2em;}   
+a { color:#2d2f30; text-decoration: underline;
+    transition: color 0.1s ease-in;}
+a:hover, a:focus { color:#db5b33;}
+
+.progressbar { margin:4em 0; 
+           /* display:none; */ }
+.progressbar .shim { width: 100%;  
+     display:none;  
+     /* border:1px dotted red; */
+    }
+.progressbar .holder { 
+    font-size:85%; padding:1.8em 0 0 0;
+     background-color: #dbe1e5;
+     box-shadow: 0 0.5em 1.5em #d6e1e5;
+     position: relative;
+}
+
+.progressbar .holder .bar { 
+    position: absolute; width: 100%;
+        height: 2px; background-color:#b6d1da;
+          left:0; bottom:0;
+}
+.progressbar .holder .bar .indicator {
+    position: absolute; top:0; left:0;
+    height: 100%; background-color: #4598B5;
+}
+.progressbar .holder .labels { 
+    max-width: 1280px; margin:0 auto;
+    padding:0 2em; text-align: center;
+}
+.progressbar .holder .labels i {
+    display: block; position: relative;
+    float: left; cursor: pointer;
+}
+.progressbar .holder .labels i::before {
+      content:"";
+      position: absolute; bottom:0;
+      left:50%; display: block;
+       width: 0.9em; height: 0.9em;
+       border-radius: 50%;
+       border:3px solid #b6d1da;
+       background-color:#d6e1e5;
+       transform: translateX(-50%) translateY(50%);
+       transition: border-color 0.1s ease-in,
+                   background-color 0.15s ease-in;
+}
+.progressbar .holder .labels i::after {
+    display: block; content:attr(data-label);
+    position: relative; top:0;
+    padding-bottom: 1.8em;
+     font-family: "Open Sans";
+     font-weight: 400; color:#4598b5;
+     transition: color 0.15s ease-in,
+                 top 0.1s ease-out;
+}
+.progressbar .holder .labels i:hover::before, 
+.progressbar .holder .labels i:focus::before  { 
+    background-color: #B6D1DA;
+}
+.progressbar .holder .labels i:hover::after, 
+.progressbar .holder .labels i:focus::after {
+     top: -.2em;
+}
+.progressbar .holder .labels i.read::before {
+    border-color:#4598b5;
+}
+.progressbar .holder .labels i.read:hover::before,
+.progressbar .holder .labels i.read:focus::before {
+    background-color: #4598B5;
+}
+
+.progressbar .holder .labels i.reading::after { 
+    color:#222;
+}
+.progressbar .holder .labels i.reading:hover::after,
+.progressbar .holder .labels i.reading:focus::after {
+    top:0;
+}
+ .progressbar.fixed .holder {
+    position: fixed; top:0; left:0; width: 100%;
+    z-index: 1;
+    }
+.progressbar.fixed .shim {  display: block;}
+
+
+
+    </style>
+</head>
+<body>
+  
+    <h1>Sticky Reading Progress Navbar </h1>
+    <p>Scroll down </p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tempus dui tortor, non pulvinar arcu tincidunt ac. Nunc pulvinar felis turpis, ut rutrum lectus volutpat id. Maecenas ornare libero laoreet justo pharetra, ut pellentesque orci dapibus. Phasellus tincidunt ante pulvinar, ornare leo quis, congue tellus. Vivamus ultricies et lectus fringilla fermentum. Pellentesque viverra vestibulum magna, ac imperdiet odio rutrum et. In lacus sem, porta ac ullamcorper a, auctor non enim. Suspendisse faucibus sapien id egestas faucibus. Proin ullamcorper ex sed nulla efficitur molestie.</p>
+    <h2>Section one</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tempus dui tortor, non pulvinar arcu tincidunt ac. Nunc pulvinar felis turpis, ut rutrum lectus volutpat id. Maecenas ornare libero laoreet justo pharetra, ut pellentesque orci dapibus. Phasellus tincidunt ante pulvinar, ornare leo quis, congue tellus. Vivamus ultricies et lectus fringilla fermentum. Pellentesque viverra vestibulum magna, ac imperdiet odio rutrum et. In lacus sem, porta ac ullamcorper a, auctor non enim. Suspendisse faucibus sapien id egestas faucibus. Proin ullamcorper ex sed nulla efficitur molestie.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tempus dui tortor, non pulvinar arcu tincidunt ac. Nunc pulvinar felis turpis, ut rutrum lectus volutpat id. Maecenas ornare libero laoreet justo pharetra, ut pellentesque orci dapibus. Phasellus tincidunt ante pulvinar, ornare leo quis, congue tellus. Vivamus ultricies et lectus fringilla fermentum. Pellentesque viverra vestibulum magna, ac imperdiet odio rutrum et. In lacus sem, porta ac ullamcorper a, auctor non enim. Suspendisse faucibus sapien id egestas faucibus. Proin ullamcorper ex sed nulla efficitur molestie.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tempus dui tortor, non pulvinar arcu tincidunt ac. Nunc pulvinar felis turpis, ut rutrum lectus volutpat id. Maecenas ornare libero laoreet justo pharetra, ut pellentesque orci dapibus. Phasellus tincidunt ante pulvinar, ornare leo quis, congue tellus. Vivamus ultricies et lectus fringilla fermentum. Pellentesque viverra vestibulum magna, ac imperdiet odio rutrum et. In lacus sem, porta ac ullamcorper a, auctor non enim. Suspendisse faucibus sapien id egestas faucibus. Proin ullamcorper ex sed nulla efficitur molestie.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tempus dui tortor, non pulvinar arcu tincidunt ac. Nunc pulvinar felis turpis, ut rutrum lectus volutpat id. Maecenas ornare libero laoreet justo pharetra, ut pellentesque orci dapibus. Phasellus tincidunt ante pulvinar, ornare leo quis, congue tellus. Vivamus ultricies et lectus fringilla fermentum. Pellentesque viverra vestibulum magna, ac imperdiet odio rutrum et. In lacus sem, porta ac ullamcorper a, auctor non enim. Suspendisse faucibus sapien id egestas faucibus. Proin ullamcorper ex sed nulla efficitur molestie.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tempus dui tortor, non pulvinar arcu tincidunt ac. Nunc pulvinar felis turpis, ut rutrum lectus volutpat id. Maecenas ornare libero laoreet justo pharetra, ut pellentesque orci dapibus. Phasellus tincidunt ante pulvinar, ornare leo quis, congue tellus. Vivamus ultricies et lectus fringilla fermentum. Pellentesque viverra vestibulum magna, ac imperdiet odio rutrum et. In lacus sem, porta ac ullamcorper a, auctor non enim. Suspendisse faucibus sapien id egestas faucibus. Proin ullamcorper ex sed nulla efficitur molestie.</p>
+    <h2>Section two</h2>
+   
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tempus dui tortor, non pulvinar arcu tincidunt ac. Nunc pulvinar felis turpis, ut rutrum lectus volutpat id. Maecenas ornare libero laoreet justo pharetra, ut pellentesque orci dapibus. Phasellus tincidunt ante pulvinar, ornare leo quis, congue tellus. Vivamus ultricies et lectus fringilla fermentum. Pellentesque viverra vestibulum magna, ac imperdiet odio rutrum et. In lacus sem, porta ac ullamcorper a, auctor non enim. Suspendisse faucibus sapien id egestas faucibus. Proin ullamcorper ex sed nulla efficitur molestie.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tempus dui tortor, non pulvinar arcu tincidunt ac. Nunc pulvinar felis turpis, ut rutrum lectus volutpat id. Maecenas ornare libero laoreet justo pharetra, ut pellentesque orci dapibus. Phasellus tincidunt ante pulvinar, ornare leo quis, congue tellus. Vivamus ultricies et lectus fringilla fermentum. Pellentesque viverra vestibulum magna, ac imperdiet odio rutrum et. In lacus sem, porta ac ullamcorper a, auctor non enim. Suspendisse faucibus sapien id egestas faucibus. Proin ullamcorper ex sed nulla efficitur molestie.</p>
+    <h2>Section three</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tempus dui tortor, non pulvinar arcu tincidunt ac. Nunc pulvinar felis turpis, ut rutrum lectus volutpat id. Maecenas ornare libero laoreet justo pharetra, ut pellentesque orci dapibus. Phasellus tincidunt ante pulvinar, ornare leo quis, congue tellus. Vivamus ultricies et lectus fringilla fermentum. Pellentesque viverra vestibulum magna, ac imperdiet odio rutrum et. In lacus sem, porta ac ullamcorper a, auctor non enim. Suspendisse faucibus sapien id egestas faucibus. Proin ullamcorper ex sed nulla efficitur molestie.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tempus dui tortor, non pulvinar arcu tincidunt ac. Nunc pulvinar felis turpis, ut rutrum lectus volutpat id. Maecenas ornare libero laoreet justo pharetra, ut pellentesque orci dapibus. Phasellus tincidunt ante pulvinar, ornare leo quis, congue tellus. Vivamus ultricies et lectus fringilla fermentum. Pellentesque viverra vestibulum magna, ac imperdiet odio rutrum et. In lacus sem, porta ac ullamcorper a, auctor non enim. Suspendisse faucibus sapien id egestas faucibus. Proin ullamcorper ex sed nulla efficitur molestie.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tempus dui tortor, non pulvinar arcu tincidunt ac. Nunc pulvinar felis turpis, ut rutrum lectus volutpat id. Maecenas ornare libero laoreet justo pharetra, ut pellentesque orci dapibus. Phasellus tincidunt ante pulvinar, ornare leo quis, congue tellus. Vivamus ultricies et lectus fringilla fermentum. Pellentesque viverra vestibulum magna, ac imperdiet odio rutrum et. In lacus sem, porta ac ullamcorper a, auctor non enim. Suspendisse faucibus sapien id egestas faucibus. Proin ullamcorper ex sed nulla efficitur molestie.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tempus dui tortor, non pulvinar arcu tincidunt ac. Nunc pulvinar felis turpis, ut rutrum lectus volutpat id. Maecenas ornare libero laoreet justo pharetra, ut pellentesque orci dapibus. Phasellus tincidunt ante pulvinar, ornare leo quis, congue tellus. Vivamus ultricies et lectus fringilla fermentum. Pellentesque viverra vestibulum magna, ac imperdiet odio rutrum et. In lacus sem, porta ac ullamcorper a, auctor non enim. Suspendisse faucibus sapien id egestas faucibus. Proin ullamcorper ex sed nulla efficitur molestie.</p>
+    <h2>Section four</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tempus dui tortor, non pulvinar arcu tincidunt ac. Nunc pulvinar felis turpis, ut rutrum lectus volutpat id. Maecenas ornare libero laoreet justo pharetra, ut pellentesque orci dapibus. Phasellus tincidunt ante pulvinar, ornare leo quis, congue tellus. Vivamus ultricies et lectus fringilla fermentum. Pellentesque viverra vestibulum magna, ac imperdiet odio rutrum et. In lacus sem, porta ac ullamcorper a, auctor non enim. Suspendisse faucibus sapien id egestas faucibus. Proin ullamcorper ex sed nulla efficitur molestie.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tempus dui tortor, non pulvinar arcu tincidunt ac. Nunc pulvinar felis turpis, ut rutrum lectus volutpat id. Maecenas ornare libero laoreet justo pharetra, ut pellentesque orci dapibus. Phasellus tincidunt ante pulvinar, ornare leo quis, congue tellus. Vivamus ultricies et lectus fringilla fermentum. Pellentesque viverra vestibulum magna, ac imperdiet odio rutrum et. In lacus sem, porta ac ullamcorper a, auctor non enim. Suspendisse faucibus sapien id egestas faucibus. Proin ullamcorper ex sed nulla efficitur molestie.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tempus dui tortor, non pulvinar arcu tincidunt ac. Nunc pulvinar felis turpis, ut rutrum lectus volutpat id. Maecenas ornare libero laoreet justo pharetra, ut pellentesque orci dapibus. Phasellus tincidunt ante pulvinar, ornare leo quis, congue tellus. Vivamus ultricies et lectus fringilla fermentum. Pellentesque viverra vestibulum magna, ac imperdiet odio rutrum et. In lacus sem, porta ac ullamcorper a, auctor non enim. Suspendisse faucibus sapien id egestas faucibus. Proin ullamcorper ex sed nulla efficitur molestie.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tempus dui tortor, non pulvinar arcu tincidunt ac. Nunc pulvinar felis turpis, ut rutrum lectus volutpat id. Maecenas ornare libero laoreet justo pharetra, ut pellentesque orci dapibus. Phasellus tincidunt ante pulvinar, ornare leo quis, congue tellus. Vivamus ultricies et lectus fringilla fermentum. Pellentesque viverra vestibulum magna, ac imperdiet odio rutrum et. In lacus sem, porta ac ullamcorper a, auctor non enim. Suspendisse faucibus sapien id egestas faucibus. Proin ullamcorper ex sed nulla efficitur molestie.</p>
+    <h2>Section five</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tempus dui tortor, non pulvinar arcu tincidunt ac. Nunc pulvinar felis turpis, ut rutrum lectus volutpat id. Maecenas ornare libero laoreet justo pharetra, ut pellentesque orci dapibus. Phasellus tincidunt ante pulvinar, ornare leo quis, congue tellus. Vivamus ultricies et lectus fringilla fermentum. Pellentesque viverra vestibulum magna, ac imperdiet odio rutrum et. In lacus sem, porta ac ullamcorper a, auctor non enim. Suspendisse faucibus sapien id egestas faucibus. Proin ullamcorper ex sed nulla efficitur molestie.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tempus dui tortor, non pulvinar arcu tincidunt ac. Nunc pulvinar felis turpis, ut rutrum lectus volutpat id. Maecenas ornare libero laoreet justo pharetra, ut pellentesque orci dapibus. Phasellus tincidunt ante pulvinar, ornare leo quis, congue tellus. Vivamus ultricies et lectus fringilla fermentum. Pellentesque viverra vestibulum magna, ac imperdiet odio rutrum et. In lacus sem, porta ac ullamcorper a, auctor non enim. Suspendisse faucibus sapien id egestas faucibus. Proin ullamcorper ex sed nulla efficitur molestie.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tempus dui tortor, non pulvinar arcu tincidunt ac. Nunc pulvinar felis turpis, ut rutrum lectus volutpat id. Maecenas ornare libero laoreet justo pharetra, ut pellentesque orci dapibus. Phasellus tincidunt ante pulvinar, ornare leo quis, congue tellus. Vivamus ultricies et lectus fringilla fermentum. Pellentesque viverra vestibulum magna, ac imperdiet odio rutrum et. In lacus sem, porta ac ullamcorper a, auctor non enim. Suspendisse faucibus sapien id egestas faucibus. Proin ullamcorper ex sed nulla efficitur molestie.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tempus dui tortor, non pulvinar arcu tincidunt ac. Nunc pulvinar felis turpis, ut rutrum lectus volutpat id. Maecenas ornare libero laoreet justo pharetra, ut pellentesque orci dapibus. Phasellus tincidunt ante pulvinar, ornare leo quis, congue tellus. Vivamus ultricies et lectus fringilla fermentum. Pellentesque viverra vestibulum magna, ac imperdiet odio rutrum et. In lacus sem, porta ac ullamcorper a, auctor non enim. Suspendisse faucibus sapien id egestas faucibus. Proin ullamcorper ex sed nulla efficitur molestie.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean tempus dui tortor, non pulvinar arcu tincidunt ac. Nunc pulvinar felis turpis, ut rutrum lectus volutpat id. Maecenas ornare libero laoreet justo pharetra, ut pellentesque orci dapibus. Phasellus tincidunt ante pulvinar, ornare leo quis, congue tellus. Vivamus ultricies et lectus fringilla fermentum. Pellentesque viverra vestibulum magna, ac imperdiet odio rutrum et. In lacus sem, porta ac ullamcorper a, auctor non enim. Suspendisse faucibus sapien id egestas faucibus. Proin ullamcorper ex sed nulla efficitur molestie.</p>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    
+    
+<script>
+    $(document).ready(function(){ });
+    $('h2').eq(0).before('<div class="progressbar"></div>');
+    var container = $('.progressbar');
+    container.append ('<div class="shim"></div>');
+     var shim = $('.progressbar .shim');
+    container.append('<div class="holder clearfix"></div>');
+    var holder = $('.progressbar .holder');
+    holder.append("<div class='bar'></div>");
+
+
+    var bar = $('.progressbar .bar');
+    bar.append('<div class="indicator"></div>');
+
+   var indicator = $('.progressbar .indicator');
+   holder.append('<div class="labels" > </div>')
+
+    var labels = $('.progressbar .labels');
+    $('h2').each(function(){
+      var code = '<i data-label="' + $(this).text() +'"></i>';
+      labels.append(code);      });
+    
+
+  var points = labels.find('i');
+  points.css('width', 100/ $('h2').length  +"%" );
+  var x = 100 / $('h2').length ;
+
+  function setShimHeight(){
+      shim.css('height', container.height() + "px");
+  }
+  setShimHeight();
+  $(window).resize(function(){ setShimHeight();})
+
+ function setIndicatorX(){
+     var point = points.eq(0);
+    var xpos = point.offset().left + (point.width() /2);
+    indicator.css('left',xpos +"px");
+ }
+setIndicatorX();
+$(window).resize(function(){ setIndicatorX();  })
+
+
+// fixPostion 함수는 브라우저에 섹션들을 고정시켜줌
+function fixPosition(){
+   if( container.is(':visible')){
+        if( !container.hasClass('fixed')){ 
+            if( holder.offset().top <= $(window).scrollTop() ){ 
+                container.addClass('fixed');
+             }
+
+        } else {
+            if( shim.offset().top > $(window).scrollTop()){
+                container.removeClass('fixed');
+            }
+        }
+   }
+}
+    fixPosition();
+    $(window).scroll(function(){ fixPosition() })
+    $(window).resize(function () { fixPosition() })
+
+
+     var triggerPoint =0;
+     function setTriggerPoint(){
+         triggerPoint = $(window).height()*0.18;
+         console.log(triggerPoint);
+     }
+    setTriggerPoint();
+    $(window).resize(function () { setTriggerPoint() })
+
+ function setPosition(){
+  if(container.is(':visible')){
+      var section = false;
+      var sectionIndex = 0;
+      var currentPosition = $(window).scrollTop() + triggerPoint;
+    //   console.log( 'h2 ',  $('h2').eq(0).offset().top);
+    //   console.log('현재포지션 ', currentPosition);
+       
+      if (currentPosition < $('h2').eq(0).offset().top) {
+          points.removeClass('reading read');
+          section = -1;
+          // 첫번째 h2 태그를 지나기전에
+      } else { 
+        $('h2').each(function(){
+            var sectionTop = $(this).offset().top;
+            if( currentPosition >= sectionTop ){
+                points.removeClass('reading');
+                points.eq(sectionIndex).addClass('reading');
+                points.eq(sectionIndex).addClass('read');
+                section = sectionIndex;
+            } else {
+                points.eq(sectionIndex).removeClass('read');
+            }
+            sectionIndex++;
+        });
+
+      }
+        var barWidth =0;
+      if( section ==-1){
+          var point = points.eq(0);
+          barWidth = point.offset().left + (point.width() / 2);
+      } else if ( section >=(points.length -1 )) {
+          var point = points.eq((points.length - 1));
+          barWidth = point.offset().left + (point.width() / 2);
+
+      } else {
+          var startPoint = points.eq(section);
+          var startPointX = startPoint.offset().left;
+          var startPointWidth = startPoint.width();
+          var startSection = $('h2').eq(section);
+          var endSection = $('h2').eq(section + 1);
+          var startSectionY = startSection.offset().top;
+          var endSectionY = endSection.offset().top;
+          var sectionLength = endSectionY - startSectionY;
+          var scrollY = currentPosition - startSectionY;
+          var sectionProgress = scrollY / sectionLength;
+          barWidth = startPointX + (startPointWidth / 2) + (startPointWidth * sectionProgress);
+      }
+
+      barWidth -= indicator.offset().left;
+      indicator.css('width', barWidth + 'px');
+      //console.log('bar 너비', barWidth)
+  }
+ }
+
+    setPosition();
+    $(window).scroll(function () { setPosition(); })
+    $(window).resize(function () { setPosition(); })
+
+
+</script>
+</body>
+</html>
